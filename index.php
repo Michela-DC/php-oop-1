@@ -5,16 +5,23 @@ class Movie {
     public $title;
     public $vote;
     public $language;
+    public $subtitles;
 
-    function __construct(string $_title, float $_vote, string $_language){
+    function __construct(string $_title, float $_vote, string $_language, string $_subs){
         $this->title = $_title;
         $this->vote = $_vote;
         $this->language = $_language;
+        $this->subtitles = $_subs;
     }
+
+    public function getLangSubs(){
+        return $this->language . ' -> Subtitles: ' . $this->subtitles;
+    }
+    
 }
 
-$spirited_away = new Movie("Spirited Away", 8.6, "Japanese");
-$lord_rings = new Movie("The Lord of the Rings - The Return of the King", 9, "English");
+$spirited_away = new Movie("Spirited Away", 8.6, "Japanese", "English");
+$lord_rings = new Movie("The Lord of the Rings - The Return of the King", 9, "English", "Italian");
 
 // var_dump($spirited_away);
 
@@ -38,7 +45,7 @@ $lord_rings = new Movie("The Lord of the Rings - The Return of the King", 9, "En
         Vote: <?php echo $spirited_away->vote; ?>
     </div>
     <div>
-        Language: <?php echo $spirited_away->language ?>
+        Language: <?php echo $spirited_away->getLangSubs() ?>
     </div>
 </div>
 
@@ -50,7 +57,7 @@ $lord_rings = new Movie("The Lord of the Rings - The Return of the King", 9, "En
         Vote: <?php echo $lord_rings->vote; ?>
     </div>
     <div>
-        Language: <?php echo $lord_rings->language ?>
+        Language: <?php echo $lord_rings->getLangSubs() ?>
     </div>
 </div>
     
