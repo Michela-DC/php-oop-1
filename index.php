@@ -1,30 +1,5 @@
 <?php
-
-class Movie {
-
-    public $title;
-    public $vote;
-    public $language;
-    public $subtitles;
-
-    function __construct(string $_title, float $_vote, string $_language, string $_subs){
-        $this->title = $_title;
-        $this->vote = $_vote;
-        $this->language = $_language;
-        $this->subtitles = $_subs;
-    }
-
-    public function getLangSubs(){
-        return $this->language . ' -> Subtitles: ' . $this->subtitles;
-    }
-    
-}
-
-$spirited_away = new Movie("Spirited Away", 8.6, "Japanese", "English");
-$lord_rings = new Movie("The Lord of the Rings - The Return of the King", 9, "English", "Italian");
-
-// var_dump($spirited_away);
-
+    include __DIR__ . '/app.php';
 ?>
 
 <!DOCTYPE html>
@@ -33,33 +8,42 @@ $lord_rings = new Movie("The Lord of the Rings - The Return of the King", 9, "En
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>First Class</title>
 </head>
 <body>
 
-<div style="margin-bottom: 20px">
-    <h3 style="margin: 0">
-        Title: <?php echo $spirited_away->title; ?>
-    </h3>
-    <div>
-        Vote: <?php echo $spirited_away->vote; ?>
-    </div>
-    <div>
-        Language: <?php echo $spirited_away->getLangSubs() ?>
-    </div>
-</div>
+<main>
+    <div class="container">
 
-<div>
-    <h3 style="margin: 0">
-        Title: <?php echo $lord_rings->title; ?>
-    </h3>
-    <div>
-        Vote: <?php echo $lord_rings->vote; ?>
+        <?php
+            foreach($movies as $key => $movie):
+            ?>
+
+            <div class="card-wrapper">
+                <figure class="poster-wrapper">
+                    <img class="poster" src="<?php echo $movie->poster; ?>" alt="">
+                </figure>
+                <div class="info-container">
+                    <h3>
+                        Title: <?php echo $movie->title; ?>
+                    </h3>
+                    <div>
+                        Vote: <?php echo $movie->vote; ?>
+                    </div>
+                    <div>
+                        Language: <?php echo $movie->getLangSubs() ?>
+                    </div>
+                </div>
+            </div>
+
+            <?php
+            endforeach;
+        ?>
+
     </div>
-    <div>
-        Language: <?php echo $lord_rings->getLangSubs() ?>
-    </div>
-</div>
+</main>
+
     
 </body>
 </html>
