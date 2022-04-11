@@ -8,7 +8,7 @@ class Movie {
     public $language;
     public $subtitles;
 
-    function __construct(string $_poster, string $_title, float $_vote, string $_language, string $_subs){
+    function __construct($_poster, $_title, $_vote, $_language, $_subs){
         $this->poster = $_poster;
         $this->title = $_title;
         $this->vote = $_vote;
